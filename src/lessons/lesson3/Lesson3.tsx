@@ -30,8 +30,21 @@ const Lesson3 = () => {
             .catch(err => { console.log(err); setShowResults(false) })
         setError(true)
         setIsFetching(false)
-
     }
+
+    // const searchFilm = async () => {
+    //     try {
+    //         const { data } = await API.searchFilmsByTitle(searchName, 1)
+    //         const {response, Search, Error} = data
+
+    //         if (response === 'True') {
+    //                             setSearchResult(JSON.stringify(Search))
+    //                         } else {
+    //                             setSearchResult(Error)
+    //                         }
+    //     } catch (error) {
+    //     }
+    // }
 
     const onPageChanged = (searchName: string, page: number) => {
 

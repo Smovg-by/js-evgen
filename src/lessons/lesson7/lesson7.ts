@@ -13,6 +13,47 @@ console.log('Lesson 7');
 // https://www.youtube.com/watch?v=aQkgUUmUJy4&t=21s
 // https://www.youtube.com/watch?v=b55hiUlhAzI
 
+// //@ts-ignore
+// function Test(name) {
+//     //@ts-ignore
+//     this.name = name
+// }
+//
+// // @ts-ignore
+// const testObj = new Test("Mike")
+// //
+// // Object.getPrototypeOf(testObj) // современный подход
+// // // эквивалентно
+// // testObj.__proto__ // устаревший подход
+// //
+// // // @ts-ignore
+// // Test.prototype.sayHi() = function(){}
+//
+// // let newObj = new testObj.__proto__.construtor('Mike')
+//
+// let objProto = Object.getPrototypeOf(testObj)
+// let newObj = new objProto.constructor("Mike")
+//
+// // @ts-ignore
+// Function.prototype.customBind = function (context, ...args) {
+//     const self = this
+//     return function (...args2) {
+//         return self.apply(context, [...args, ...args2])
+//     }
+// }
+//
+// let obj = {
+//     name: 'Mike',
+//     sayName() {
+//         console.log(this.name);
+//     }
+// }
+//
+// let obj2 = {
+//     name: 'Stan'
+// }
+//
+// let bindedFunc = obj.sayName.customBind(obj2)()
 
 //Task 01
 // Реализовать класс Animal который принимает name(по умолчанию 'Animal') в качестве параметра, у которого будет 3
@@ -20,12 +61,42 @@ console.log('Lesson 7');
 // walk => `${this.name} walking`
 // проверить, что методы работают
 
-
 //Task 02
 // Реализовать класс Monkey на базе класса Animal,  конструктор принимает name(по умолчанию 'Monkey') в качестве
 // параметра, реализовать методы roar и climb аналогично классу Animal
 // проверить, что все методы работают
 
+function Animal(name = 'Animal') {
+}
+
+Animal.prototype = {
+    constructor: Animal,
+    walk() {
+    },
+    eat() {
+    },
+    sleep() {
+    },
+}
+
+function Monkey(name = "Monkey") {
+    Animal.call(this, name)
+}
+
+Monkey.prototype = Object.create(Animal.prototype, {
+    constructor: {Monkey},
+    roar: {
+        function() {
+        }
+    },
+    climb: {
+        function() {
+        }
+    },
+})
+
+let m = new Monkey('Yoyo')
+console.log(m)
 
 //Task 03
 // Реализовать класс Human на базе класса Monkey, конструктор принимает name(по умолчанию 'Human') в качестве
@@ -42,4 +113,5 @@ console.log('Lesson 7');
 
 
 // just a plug
-export default () => {};
+export default () => {
+};

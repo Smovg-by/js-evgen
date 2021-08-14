@@ -66,37 +66,37 @@ console.log('Lesson 7');
 // параметра, реализовать методы roar и climb аналогично классу Animal
 // проверить, что все методы работают
 
-function Animal(name = 'Animal') {
-}
-
-Animal.prototype = {
-    constructor: Animal,
-    walk() {
-    },
-    eat() {
-    },
-    sleep() {
-    },
-}
-
-function Monkey(name = "Monkey") {
-    Animal.call(this, name)
-}
-
-Monkey.prototype = Object.create(Animal.prototype, {
-    constructor: {Monkey},
-    roar: {
-        function() {
-        }
-    },
-    climb: {
-        function() {
-        }
-    },
-})
-
-let m = new Monkey('Yoyo')
-console.log(m)
+// function Animal(name = 'Animal') {
+// }
+//
+// Animal.prototype = {
+//     constructor: Animal,
+//     walk() {
+//     },
+//     eat() {
+//     },
+//     sleep() {
+//     },
+// }
+//
+// function Monkey(name = "Monkey") {
+//     Animal.call(this, name)
+// }
+//
+// Monkey.prototype = Object.create(Animal.prototype, {
+//     constructor: {Monkey},
+//     roar: {
+//         function() {
+//         }
+//     },
+//     climb: {
+//         function() {
+//         }
+//     },
+// })
+//
+// let m = new Monkey('Yoyo')
+// console.log(m)
 
 //Task 03
 // Реализовать класс Human на базе класса Monkey, конструктор принимает name(по умолчанию 'Human') в качестве

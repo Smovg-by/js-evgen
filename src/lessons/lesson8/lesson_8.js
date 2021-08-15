@@ -61,39 +61,35 @@ const tree = {
     }]
 };
 
-// function treeSum(tree) {
-//   if (!tree.next) {
-//     console.log(tree.valueNode)
-//     return tree.valueNode
-//   } else {
-//     let sum = 0;
-//     for (let item of tree.next) {
-//       sum += treeSum(item)
-//     }
-//     return sum
-//   }
-// }
-
 function treeSum(tree) {
   let sum = 0
-  if (tree) {
-    sum += tree.valueNode
+
+  function topSum(tree) {
     if (tree.next) {
-      console.log('up')
-      tree.next.forEach(item => {
-        // console.log('valueNode is...' + item.valueNode)
-        treeSum(item)
-      })
+      // console.log('up...', tree.valueNode)
+      sum = sum + tree.valueNode
+      if (tree.next.some(item => item.next)) {
+        tree.next.forEach(item => {
+          return topSum(item)
+        })
+      } else {
+        // console.log('top...', tree.next[tree.next.length - 1].valueNode)
+        sum = sum + tree.next[tree.next.length - 1].valueNode
+        return sum
+      }
     }
   }
+
+  topSum(tree)
   return sum
 }
 
 treeSum(tree)
+
 // Task 5
 // исправить код, что бы работал правильно
 
-for (var i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   setTimeout(function () {
     console.log(i);
   }, 100);
